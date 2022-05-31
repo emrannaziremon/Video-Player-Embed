@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Player for Webflow</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/demo.css" />
+    <!-- <link rel="stylesheet" href="video-player.css"> -->
+  </head>
+
+  <style>
+    .the-vplayer-wrapper {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .plyr__control--overlaid:before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      display: block;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      background: #2278c9;
+      border-radius: 50%;
+      transition: all 200ms;
+      animation: pulse-border 1500ms ease-out infinite;
+    }
+
+    .plyr__control--overlaid:after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      display: none;
+      width: 80px;
+      height: 80px;
+      background: #2278c9;
+      border-radius: 50%;
+      transition: all 200ms;
+    }
+
+    .plyr--full-ui.plyr--video .plyr__control--overlaid {
+      display: block;
+      height: 80px;
+      width: 80px;
+      /* transform: translate(15px, 10px); */
+    }
+
+    .plyr__control--overlaid svg {
+      left: 2px;
+      position: relative;
+      margin-left: 6px;
+      height: 30px;
+      width: 40px;
+    }
+
+    @keyframes pulse-border {
+      0% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .plyr--captions-enabled [data-plyr="captions"] {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="the-vplayer-wrapper">
+      <video
+        crossorigin=""
+        playsinline=""
+        data-poster="https://embed-ssl.wistia.com/deliveries/ec3ea5586392a4b7697d4cc85dea7766.webp?image_crop_resized=960x540"
+        id="player"
+      >
+        <source
+          src="assets/IHHT-mitochondrien.mp4"
+          type="video/mp4"
+          size="576"
+        />
+        <source
+          src="assets/IHHT-mitochondrien.mp4"
+          type="video/mp4"
+          size="720"
+        />
+        <source
+          src="assets/IHHT-mitochondrien.mp4"
+          type="video/mp4"
+          size="1080"
+        />
+
+        <track
+          kind="captions"
+          label="English"
+          srclang="en"
+          src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
+          default=""
+        />
+        <track
+          kind="captions"
+          label="Français"
+          srclang="fr"
+          src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt"
+        />
+
+        <a
+          href="https://allaboutstress.ch/video/IHHT-mitochondrien.mp4"
+          download=""
+          >Download</a
+        >
+      </video>
+    </div>
+
+    <script
+      src="https://cdn.plyr.io/3.7.2/demo.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
